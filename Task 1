@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>ShopMate</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="products">
+        <h2>Featured Products</h2>
+        <div class="product-list">
+            <!-- Example Product -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product Image">
+                <h3>Product 1</h3>
+                <p>$99.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product Image">
+                <h3>Product 2</h3>
+                <p>$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product Image">
+                <h3>Product 3</h3>
+                <p>$199.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShopMate, All Rights Reserved</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
