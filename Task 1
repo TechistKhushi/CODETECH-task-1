@@ -1,58 +1,156 @@
+/* Html code(index.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website Clone</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <h1>ShopMate</h1>
-        </div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Cart</a></li>
-                <li><a href="#">Sign In</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <section class="products">
-        <h2>Featured Products</h2>
-        <div class="product-list">
-            <!-- Example Product -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Product Image">
-                <h3>Product 1</h3>
-                <p>$99.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Product Image">
-                <h3>Product 2</h3>
-                <p>$49.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Product Image">
-                <h3>Product 3</h3>
-                <p>$199.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 ShopMate, All Rights Reserved</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <div class="input-section">
+      <input type="text" id="taskInput" placeholder="Enter a new task...">
+      <button id="addTaskBtn">Add</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
+/* CSS code (style.css)
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#addTaskBtn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#addTaskBtn:hover {
+  background-color: #0056b3;
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+  transition: background 0.3s;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  background: #d4edda;
+  color: #155724;
+}
+
+.task button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #dc3545;
+  padding: 5px;
+}
+
+.task button:hover {
+  color: #a71d2a;
+}
+
+/* JS code (script.js)
+const taskInput = document.getElementById('taskInput');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskList = document.getElementById('taskList');
+
+// Function to create a new task element
+function createTask(taskText) {
+  const li = document.createElement('li');
+  li.classList.add('task');
+
+  const span = document.createElement('span');
+  span.textContent = taskText;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = '🗑️';
+  deleteBtn.addEventListener('click', () => li.remove());
+
+  li.appendChild(span);
+  li.appendChild(deleteBtn);
+
+  // Toggle completion on click
+  li.addEventListener('click', () => li.classList.toggle('completed'));
+
+  return li;
+}
+
+// Add task to the list
+addTaskBtn.addEventListener('click', () => {
+  const taskText = taskInput.value.trim();
+  if (taskText) {
+    const task = createTask(taskText);
+    taskList.appendChild(task);
+    taskInput.value = '';
+    taskInput.focus();
+  }
+});
+
+// Add task on pressing "Enter"
+taskInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addTaskBtn.click();
+  }
+});
